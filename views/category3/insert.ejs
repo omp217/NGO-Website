@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/background.css">
+    <link rel="stylesheet" href="/1_insert.css">
+</head>
+
+<body>
+    <%- include("../partials/background.ejs") %>
+    <form action="">
+        <div>
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" id="first_name" placeholder="Enter The First Name" required>
+        </div>
+        <div>
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" id="last_name" placeholder="Enter The First Name" required>
+        </div>
+        <div>
+            <label for="date_of_visit">Date of Visit</label>
+            <input type="date" id="date_of_visit" name="date_of_visit" required>
+        </div>
+        <div>
+            <label for="mobile_number">Mobile Number</label>
+            <input type="tel" name="mobile_number" id="mobile_number" placeholder="Formate: XXXXXXXXXX" minlength="10" maxlength="10" pattern="[0-9]{10}" required>
+        </div>
+        <div id="container">
+            <label for="reason_of_visit">Details about Help</label>
+            <select name="reason_of_visit" id="reason_of_visit">
+                <option value="research">Research</option>
+                <option value="job">Job</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div id="submit">
+            <button>Submit</button>
+        </div>
+        <div id="error_div">
+            <label id="error" style="color: red;"></label>
+        </div>
+    </form>
+    <script>
+        date_of_visit.max = new Date().toISOString().split("T")[0];
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            
+            const res = await fetch('/category3/insert', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            const json = await res.json();
+            console.log(json);
+            // location.assign('/');
+            if(json.err == '')
+            {
+                location.assign('/category3/insert');
+            }
+            else
+            {
+                document.querySelector('#error').innerHTML = json.err;
+            }
+        });
+    </script>
+</body>
+</html>

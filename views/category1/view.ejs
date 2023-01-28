@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/background.css">
+    <link rel="stylesheet" href="/1_view.css">
+</head>
+<body>
+    <%- include("../partials/background.ejs") %>
+    <form action="#">
+        <div>
+            <label for="aadhar_number">Aadhar Number</label>
+            <input type="tel" name="aadhar_number" id="aadhar_number" minlength="14" maxlength="14" pattern="[0-9]{4} [0-9]{4} [0-9]{4}">
+        </div>
+        <div id="or">
+            <p>-----------OR-----------</p>
+        </div>
+        <div>
+            <label for="birth_date">Birth Date</label>
+            <input type="date" id="birth_date" name="birth_date">
+        </div>
+        <div id="submit">
+            <button>Submit</button>
+        </div>
+        <div id="error_div">
+            <label id="error" style="color: red;"><%= err %></label>
+        </div>
+    </form>
+    <div id="data">
+        <!-- <%= data %> -->
+        <% for(let i = 0; i < data.length; i++) { %>
+            <details><summary>Data <%= i+1 %></summary>
+                <p> First Name: <%= data[i].first_name %> </p>
+                <p> Last Name: <%= data[i].last_name %> </p>
+                <p> Date of Visit: <%= data[i].date_of_visit %> </p>
+                <p> Reference Name: <%= data[i].ref_name %> </p>
+                <p> Birth Date: <%= data[i].birth_date %> </p>
+                <p> Aadhar Number: <%= data[i].aadhar_number %> </p>
+                <p> Address: <%= data[i].address %> </p>
+                <p> Mobile Number: <%= data[i].mobile_number %> </p>
+                <p> Type of Disabled: <%= data[i].type_of_disabled %> </p>
+                <p> Disability Percentage: <%= data[i].percentage_of_disabled %> </p>
+                <div>
+                    <% for(let j = 0; j < data[i].help.length; j++) { %>
+                        <h4>Help <%= j+1 %> </h4>
+                        <% let temp = data[i].help[j]; %>
+                        <p> Help: <%=temp.help %> </p>
+                        <p> From: <%=temp.help_organization %> </p>
+                        <p> Date: <%=temp.date_of_help %> </p>
+                    <% } %>
+                </div>
+            </details>
+        <% } %>
+    </div>
+    <script>
+        birth_date.max = new Date().toISOString().split("T")[0];
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            console.log(data);
+            const res = await fetch('/category1/view', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            const json = await res.json();
+            console.log(json.err);
+            console.log(json.data);
+            location.href = "/category1/view";
+        });
+    </script>
+</body>
+</html>

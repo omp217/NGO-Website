@@ -1,0 +1,140 @@
+form
+{
+    /* position: absolute; */
+    top: 7%;
+    left: 25%;
+    display: block;
+    margin: 2% auto 0% auto;
+    /* width: 100%; */
+}
+
+form div
+{
+    margin: 5px 0px;
+    height: 2%;
+    box-sizing: content-box;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+label
+{
+    width: 8.2rem;
+    display: flex;
+    align-items: center;
+}
+
+input
+{
+    width: 25.5rem;
+    height: 2%;
+    background-color: rgba(99, 96, 96, 0.512);
+    border: 0px;
+    /* line-height: 2%; */
+    box-sizing: content-box;
+    padding: 15px 8px;
+    font-size: 1.05rem;
+}
+
+input:focus
+{
+    outline: none;
+}
+
+#or
+{
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0px;
+    opacity: 0.5;
+}
+
+form div p
+{
+    text-align: center;
+}
+
+#submit
+{
+    margin-top: 0px;
+    background-color: transparent;
+    text-align: center;
+}
+
+button
+{
+    margin-top: 2%;
+    background-color: transparent;
+    border: 0px;
+    outline: 0px;
+    font-size: 1.5rem;
+    opacity: 0.4;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+button:hover
+{
+    opacity: 1;
+    cursor: pointer;
+    color: red;
+}
+
+#error_div
+{
+    margin-top: 1%;
+    background-color: transparent;
+    text-align: center;
+    margin-bottom: 0%;
+}
+
+#error
+{
+    margin-top: 0px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0%;
+}
+
+#data
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    row-gap: auto;
+    column-gap: auto;
+}
+
+#data details
+{
+    min-width: 24%;
+    padding: 2%;
+    display: inline-block;
+}
+
+summary
+{
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+details div
+{
+    margin-top: 5%;
+}
+
+details p, details div p
+{
+    opacity: 0.3;
+}
+
+details p:hover, details div p:hover
+{
+    opacity: 1;
+    color: red;
+}

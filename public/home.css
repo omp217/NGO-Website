@@ -1,0 +1,23 @@
+div
+{
+    position: absolute;
+    top: 7%;
+    left: 5%;
+    display: flex;
+    flex-direction: row;
+}
+
+a
+{
+    color: rgba(121, 115, 115, 0.467);
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin: 2px 28px;
+    display: block;
+    font-stretch: wider;
+}
+
+a:hover
+{
+    color: red;
+}

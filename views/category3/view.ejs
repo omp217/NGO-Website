@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/background.css">
+    <link rel="stylesheet" href="/1_view.css">
+</head>
+<body>
+    <form action="#">
+        <div>
+            <label for="mobile_number">Mobile Number</label>
+            <input type="tel" name="mobile_number" id="mobile_number" placeholder="Formate: XXXXXXXXXX" minlength="10" maxlength="10" pattern="[0-9]{10}" required>
+        </div>
+        <div id="submit">
+            <button>Submit</button>
+        </div>
+        <div id="error_div">
+            <label id="error" style="color: red;"><%= err %></label>
+        </div>
+    </form>
+    <div id="data">
+        <% for(let i = 0; i < data.length; i++) { %>
+            <details><summary>Data <%= i+1 %></summary>
+                <p> First Name: <%= data[i].first_name %> </p>
+                <p> Last Name: <%= data[i].last_name %> </p>
+                <p> Date of Visit: <%= data[i].date_of_visit %> </p>
+                <p> Mobile Number: <%= data[i].mobile_number %> </p>
+                <p> Reason Of Visit: <%= data[i].reason_of_visit %> </p>
+            </details>
+        <% } %>
+    </div>
+    <script>
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            console.log(data);
+            const res = await fetch('/category3/view', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            const json = await res.json();
+            console.log(json.err);
+            console.log(json.data);
+            location.href = "/category3/view";
+        });
+    </script>
+</body>
+</html>

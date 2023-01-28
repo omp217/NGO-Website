@@ -1,0 +1,160 @@
+@import url('https://css.gg/math-plus.css');
+
+form
+{
+    position: absolute;
+    top: 7%;
+    left: 25%;
+    /* width: 100%; */
+}
+
+form div
+{
+    margin: 15px 0px;
+    height: 2%;
+    box-sizing: content-box;
+    display: flex;
+}
+
+label
+{
+    width: 15.2rem;
+    display: flex;
+    align-items: center;
+}
+
+input, textarea, select
+{
+    width: 25.5rem;
+    height: 2%;
+    background-color: rgba(99, 96, 96, 0.512);
+    border: 0px;
+    /* line-height: 2%; */
+    box-sizing: content-box;
+    padding: 15px 8px;
+    font-size: 1.05rem;
+}
+
+input:focus, textarea:focus, select:focus
+{
+    outline: none;
+}
+
+textarea
+{
+    font-size: 0.9rem;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+select option
+{
+    background-color: rgba(219, 42, 42, 0.16);
+}
+
+#help_label
+{
+    display: block;
+    font-size: larger;
+    text-align: center;
+    width: 100%;
+    margin-top: 7%;
+}
+
+#help_div
+{
+    display: flexbox;
+    flex-direction: column;
+    padding-top: 2%;
+}
+
+[id^=help_div_]
+{
+    display: flexbox;
+    flex-direction: column;
+    margin-bottom: 2%;
+}
+
+input[type=button]
+{
+    width: 3.2rem;
+    font-size: 1.7rem;
+    background-color: transparent;
+    opacity: 0.4
+}
+
+input[type=button]:hover
+{
+    opacity: 1;
+    cursor: pointer;
+    color: red;
+}
+
+#submit
+{
+    margin-top: 0px;
+    background-color: transparent;
+    text-align: center;
+}
+
+button
+{
+    margin-top: 0px;
+    background-color: transparent;
+    border: 0px;
+    outline: 0px;
+    font-size: 1.7rem;
+    opacity: 0.4;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+button:hover
+{
+    opacity: 1;
+    cursor: pointer;
+    color: red;
+}
+
+#error_div
+{
+    margin-top: 0px;
+    background-color: transparent;
+    text-align: center;
+}
+
+#error
+{
+    margin-top: 0px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+#edit_div
+{
+    margin-top: 0px;
+    background-color: transparent;
+    text-align: center;
+}
+
+#edit
+{
+    margin-top: 0px;
+    display: none;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+#edit:hover
+{
+    color: red;
+}
